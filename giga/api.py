@@ -19,7 +19,7 @@ class GigaChatAPI:
         if response.status_code == 200:
             resp_json = response.json()
             self.token = resp_json['access_token']
-            self.token_expiry = time.time() + resp_json.get('expires_in', 3600) - 60
+            self.token_expiry = time.time() + resp_json.get('expires_in', 3600) - 300
             return self.token
         else:
             raise Exception(f'Failed to get access token: {response.text}')
@@ -48,4 +48,4 @@ class GigaChatAPI:
         else:
             raise Exception(f'GigaChat API error: {response.status_code} {response.text}')
 
-gigachat_api = GigaChatAPI() 
+gigachat_api = GigaChatAPI()
